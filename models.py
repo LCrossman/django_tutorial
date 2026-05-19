@@ -28,32 +28,6 @@ class Genre(models.Model):
             ),
         ]
 
-class Language(models.Model):
-    """Model representing language."""
-    name = models.CharField(
-        max_length=200,
-        unique=True,
-        help_text="Enter the language"
-    )
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.name
-
-    def get_absolute_url(self):
-        """Returns the url to access a particular genre instance."""
-        return reverse('language-detail', args=[str(self.id)])
-
-    class Meta:
-        constraints = [
-            UniqueConstraint(
-                Lower('name'),
-                name='language_name_case_insensitive_unique',
-                violation_error_message = "language already exists (case insensitive match)"
-            ),
-        ]
-
-
 class MyModelName(models.Model):
     """A typical class defining a model, derived from the Model class."""
 
